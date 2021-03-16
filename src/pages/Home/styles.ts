@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import Button from '../../components/Button';
 
 export const Container = styled.View`
   flex: 1;
@@ -10,4 +11,8 @@ export const Container = styled.View`
 export const ContainerTitle = styled.Text`
   font-size: 55px;
   color: #fff;
+`;
+
+export const ButtonContainer = styled(Button)`
+  margin-top: 10px;
 `;

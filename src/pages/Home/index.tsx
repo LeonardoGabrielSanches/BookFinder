@@ -3,7 +3,7 @@ import {useNavigation} from '@react-navigation/native';
 
 import Input from '../../components/Input';
 
-import {Container, ContainerTitle} from './styles';
+import {Container, ContainerTitle, ButtonContainer} from './styles';
 
 const Home: React.FC = () => {
   const navigation = useNavigation();
@@ -29,7 +29,7 @@ const Home: React.FC = () => {
         returnKeyType={'search'}
         onSubmitEditing={handleFindBooks}
       />
-      {/* MissingButton */}
+      <ButtonContainer title="Find" onPress={handleFindBooks} />
     </Container>
   );
 };
