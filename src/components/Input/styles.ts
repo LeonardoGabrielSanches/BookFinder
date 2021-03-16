@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-export const ButtonContainer = styled.TextInput`
+export const InputContainer = styled.TextInput`
   background-color: #fff;
   width: 370px;
   margin-top: 30px;
