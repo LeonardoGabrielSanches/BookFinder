@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 
 import Icon from 'react-native-vector-icons/AntDesign';
 
-export const Container = styled.View`
+export const Container = styled.SafeAreaView`
   flex: 1;
   background-color: #374782;
   padding-top: 10px;
