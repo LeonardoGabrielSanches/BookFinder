@@ -1,4 +1,4 @@
-import React, {useMemo} from 'react';
+import React, {useCallback, useMemo} from 'react';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import {IBook} from '../../pages/BookList';
@@ -12,6 +12,7 @@ import {
   TextContainer,
   SubTitleContainer,
 } from './styles';
+import {useNavigation} from '@react-navigation/core';
 
 interface IBookListItemProps {
   book: IBook;
@@ -20,6 +21,8 @@ interface IBookListItemProps {
 const BookListItem: React.FC<IBookListItemProps> = ({
   book,
 }: IBookListItemProps) => {
+  const navigation = useNavigation();
+
   const formattedSubTitle = useMemo(() => {
     let croppedSubTitle = book.subtitle;
 
@@ -32,8 +35,12 @@ const BookListItem: React.FC<IBookListItemProps> = ({
     return croppedSubTitle;
   }, [book]);
 
+  const handleNavigate = useCallback(() => {
+    navigation.navigate('BookDetails', {isbn13: book.isbn13});
+  }, [book.isbn13, navigation]);
+
   return (
-    <Container>
+    <Container onPress={handleNavigate}>
       <ImageContainer
         source={{
           uri: book.image,
@@ -43,7 +50,7 @@ const BookListItem: React.FC<IBookListItemProps> = ({
         <TitleContainer>{book.title}</TitleContainer>
         <SubTitleContainer>{formattedSubTitle}</SubTitleContainer>
       </TextContainer>
-      <Icon name="right" size={19} color={'#fff'} />
+      <Icon name="right" size={19} color={'#fff'} onPress={handleNavigate} />
     </Container>
   );
 };

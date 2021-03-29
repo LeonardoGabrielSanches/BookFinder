@@ -11,6 +11,13 @@ export const Container = styled.SafeAreaView`
   padding-right: 20px;
 `;
 
+export const LoadingContainer = styled.View`
+  flex: 1;
+  background-color: #374782;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const IconContainer = styled(Icon)`
   margin-bottom: 10px;
 `;
