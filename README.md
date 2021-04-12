@@ -1,4 +1,8 @@
 <h1>BookFinder</h1>
+<h2>Leonardo Gabriel Sanches 180214</h2>
+
+- [Figma] (https://www.figma.com/file/GWhZLGT8iTyKbv9qX2rama/Find-IT-Books)
+
 
 # Indice
 
