@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:165717685791:android:b456094bd4a7538e44472a",
+        "mobilesdk_app_id": "1:165717685791:android:c95ef68a8593ce8444472a",
         "android_client_info": {
-          "package_name": "com.leonardo.bookfinder"
+          "package_name": "com.bookfinder"
         }
       },
       "oauth_client": [
