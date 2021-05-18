@@ -30,6 +30,10 @@ const Home: React.FC = () => {
     navigation.navigate('Login');
   }, [navigation]);
 
+  const handleNavigateFavorites = useCallback(async () => {
+    navigation.navigate('Favorites');
+  }, [navigation]);
+
   return (
     <Container>
       <ContainerTitle>Find IT Books</ContainerTitle>
@@ -43,7 +47,7 @@ const Home: React.FC = () => {
         onSubmitEditing={handleFindBooks}
       />
       <ButtonContentContainer>
-        <Button title="Favorites" onPress={() => {}} />
+        <Button title="Favorites" onPress={handleNavigateFavorites} />
 
         <Button
           title="Find book"
