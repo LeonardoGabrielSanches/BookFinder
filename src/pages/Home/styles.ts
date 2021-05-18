@@ -13,6 +13,13 @@ export const ContainerTitle = styled.Text`
   color: #fff;
 `;
 
-export const ButtonContainer = styled(Button)`
+export const ButtonContentContainer = styled.View`
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
   margin-top: 10px;
+`;
+
+export const LogoutButton = styled(Button)`
+  margin-top: 20px;
 `;

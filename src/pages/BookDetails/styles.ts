@@ -16,6 +16,11 @@ export const Container = styled.ScrollView`
   padding-right: 20px;
 `;
 
+export const HeaderContainer = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
 export const ContentContainer = styled.View`
   margin-top: 5px;
   align-items: center;

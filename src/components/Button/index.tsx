@@ -7,10 +7,15 @@ import {ButtonContainer, TitleContainer} from './styles';
 
 interface ButtonProps extends RectButtonProperties {
   title: string;
+  disable?: boolean;
 }
 
-const Button: React.FC<ButtonProps> = ({title, ...rest}: ButtonProps) => (
-  <ButtonContainer {...rest}>
+const Button: React.FC<ButtonProps> = ({
+  title,
+  disable = false,
+  ...rest
+}: ButtonProps) => (
+  <ButtonContainer disable={disable} enabled={!disable} {...rest}>
     <TitleContainer>{title}</TitleContainer>
   </ButtonContainer>
 );

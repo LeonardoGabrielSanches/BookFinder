@@ -1,9 +1,16 @@
 import React, {useCallback, useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
+import auth from '@react-native-firebase/auth';
 
 import Input from '../../components/Input';
 
-import {Container, ContainerTitle, ButtonContainer} from './styles';
+import {
+  Container,
+  ContainerTitle,
+  ButtonContentContainer,
+  LogoutButton,
+} from './styles';
+import Button from '../../components/Button';
 
 const Home: React.FC = () => {
   const navigation = useNavigation();
@@ -17,19 +24,34 @@ const Home: React.FC = () => {
     setFindValue('');
   }, [findValue, navigation]);
 
+  const handleLogout = useCallback(async () => {
+    await auth().signOut();
+
+    navigation.navigate('Login');
+  }, [navigation]);
+
   return (
     <Container>
       <ContainerTitle>Find IT Books</ContainerTitle>
       <Input
         onChangeText={setFindValue}
         value={findValue}
-        autoCapitalize={'words'}
+        autoCapitalize="words"
         autoFocus
         placeholder="Type a tecnology to find books"
-        returnKeyType={'search'}
+        returnKeyType="search"
         onSubmitEditing={handleFindBooks}
       />
-      <ButtonContainer title="Find" onPress={handleFindBooks} />
+      <ButtonContentContainer>
+        <Button title="Favorites" onPress={() => {}} />
+
+        <Button
+          title="Find book"
+          onPress={handleFindBooks}
+          disable={!findValue}
+        />
+      </ButtonContentContainer>
+      <LogoutButton title="Logout" onPress={handleLogout} />
     </Container>
   );
 };
