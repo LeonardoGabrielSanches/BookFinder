@@ -30,8 +30,11 @@ jobs:
       - name: Instalar NDK
         run: echo "y" | sudo ${ANDROID_HOME}/tools/bin/sdkmanager --install "ndk;20.0.5594570"
 
-      #Build do projeto e gera APK
-      - name: Builda APK
+      - name: Make Gradle executable
+        run: chmod +x ./gradlew
+      - name: Build with Gradle
+        run: ./gradlew build
+      - name: Build Release APK
         run: ./gradlew assembleRelease
 
       # Enviar para firebase
