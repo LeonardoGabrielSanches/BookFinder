@@ -2,7 +2,7 @@
 
 name: Release
 
-# Controls when the action will run. 
+# Controls when the action will run.
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
@@ -19,25 +19,25 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      
+
       # Setup JDK
       - name: JDK Setup
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
-          
+
       # Instalar NDK
       - name: Instalar NDK
-        run: echo "y" | sudo ${ANDROID_HOME}/tools/bin/sdkmanager -install "ndk;20.0.5594570"
-        
+        run: echo "y" | sudo ${ANDROID_HOME}/tools/bin/sdkmanager --install "ndk;20.0.5594570"
+
       #Build do projeto e gera APK
       - name: Builda APK
         run: ./gradlew assembleRelease
-        
+
       # Enviar para firebase
       - name: Upload artifact
         uses: wzieba/Firebase-Distribution-Github-Action@v1.2.1
-        with: 
+        with:
          appId: ${{ secrets.FIREBASE_APP_ID }}
          token: ${{ secrets.FIREBASE_TOKEN }}
          groups: deploy
