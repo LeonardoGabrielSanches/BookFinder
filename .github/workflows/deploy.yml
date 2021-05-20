@@ -1,43 +1,32 @@
-# This is a basic workflow to help you get started with Actions
-
-name: Release
-
-# Controls when the action will run.
+name: react-native-android-build-apk
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ master ]
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+    branches:
+      - master
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+  install-and-test:
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-
-      # Setup JDK
-      - name: JDK Setup
-        uses: actions/setup-java@v1
+      - name: Install npm dependencies
+        run: |
+          npm install
+  build-android:
+    needs: install-and-test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install npm dependencies
+        run: |
+          npm install
+      - name: Build Android Release
+        run: |
+          cd android && ./gradlew assembleRelease
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v1
         with:
-          java-version: 1.8
-
-      - name: Make gradlew works
-        run: chmod +x ./gradlew
-
-      # Instalar NDK
-      - name: Instalar NDK
-        run: echo "y" | sudo ${ANDROID_HOME}/tools/bin/sdkmanager --install "ndk;20.0.5594570"
-
-      - name: Build APK
-        run: ./gradlew build
-
-      - name: Release APK
-        run: ./gradlew assembleRelease
+          name: app-release.apk
+          path: android/app/build/outputs/apk/release/
 
       # Enviar para firebase
       - name: Upload artifact
