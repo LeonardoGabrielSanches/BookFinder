@@ -15,9 +15,9 @@ jobs:
     needs: install-and-test
     runs-on: ubuntu-latest
 
-  env:
-    FIREBASE_APP_ID: ${{secrets.FIREBASE_APP_ID}}
-    FIREBASE_TOKEN: ${{secrets.FIREBASE_TOKEN}}
+    env:
+      FIREBASE_APP_ID: ${{secrets.FIREBASE_APP_ID}}
+      FIREBASE_TOKEN: ${{secrets.FIREBASE_TOKEN}}
 
     steps:
       - uses: actions/checkout@v2
