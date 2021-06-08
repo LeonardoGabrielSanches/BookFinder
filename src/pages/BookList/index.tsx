@@ -50,7 +50,7 @@ const BookList: React.FC = () => {
       if (response.data.books.length <= 0) {
         Alert.alert(
           'Sorry',
-          'This technology this does not exists on our database',
+          'This technology this does not exists on our database.',
           [{text: 'Go back', onPress: handleGoBack}],
         );
         return;
